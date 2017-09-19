@@ -1,3 +1,8 @@
+"""
+A python program to create and store coauthorship graphs of publised ArXiv papers.
+Author: Sailik Sengupta
+"""
+
 from graph_tool.all import *
 from pylab import *
 import arxivscraper
@@ -8,11 +13,7 @@ import sys
 
 def plot_degrees(graph, date_from):
     hist = vertex_hist(graph, deg="total")
-    y = hist[0]
-    err = sqrt(hist[0])
-    err[err >= y] = y[err >= y] - 1e-2
-    errorbar(hist[1][:-1], hist[0], fmt="o",
-        label="total")
+    errorbar(hist[1][:-1], hist[0], fmt="o", label="total")
     xlabel("Vertex (author) number")
     ylabel("Co-authors")
     tight_layout()
